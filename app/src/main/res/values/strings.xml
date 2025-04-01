@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SOSremasterd</string>
+    <string name="accessibility_service_description">SOS Emergency Service - Monitors key combinations for emergency triggers</string>
+    <string name="accessibility_service_label">SOS Emergency Service</string>
+</resources>
