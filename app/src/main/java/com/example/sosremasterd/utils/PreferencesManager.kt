@@ -65,6 +65,10 @@ class PreferencesManager(context: Context) {
         get() = prefs.getBoolean("has_completed_setup", false)
         set(value) = prefs.edit().putBoolean("has_completed_setup", value).apply()
 
+    var language: String
+        get() = prefs.getString("language", "en") ?: "en"
+        set(value) = prefs.edit().putString("language", value).apply()
+
     companion object {
         private const val PREFS_NAME = "sos_preferences"
         private const val KEY_FIRST_LAUNCH = "first_launch"

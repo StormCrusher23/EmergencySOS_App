@@ -18,6 +18,10 @@ import android.os.IBinder
 import com.example.sosremasterd.service.SOSService
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.sosremasterd.viewmodel.TriggerViewModel
+import android.content.res.Configuration
+import java.util.*
+import android.content.Context
+import com.example.sosremasterd.utils.LocaleHelper
 
 class MainActivity : ComponentActivity() {
     private var sosService: SOSService? = null
@@ -32,6 +36,13 @@ class MainActivity : ComponentActivity() {
         override fun onServiceDisconnected(name: ComponentName?) {
             sosService = null
         }
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        // Get the saved language preference or use system default
+        val languageCode = newBase.getSharedPreferences("sos_prefs", Context.MODE_PRIVATE)
+            .getString("language", LocaleHelper.getLanguage(newBase)) ?: "en"
+        super.attachBaseContext(LocaleHelper.setLocale(newBase, languageCode))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -9,7 +9,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.sosremasterd.R
 import com.example.sosremasterd.data.EmergencyContact
 import com.example.sosremasterd.utils.PreferencesManager
 
@@ -18,8 +20,8 @@ fun ContactSetupScreen(
     preferencesManager: PreferencesManager,
     onBack: () -> Unit
 ) {
-    var showAddDialog by remember { mutableStateOf(false) }
     var contacts by remember { mutableStateOf(preferencesManager.emergencyContacts) }
+    var showAddDialog by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -27,24 +29,17 @@ fun ContactSetupScreen(
             .padding(16.dp)
     ) {
         Text(
-            text = "Emergency Contacts",
+            text = stringResource(R.string.contact_setup),
             style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
         if (contacts.isEmpty()) {
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "No emergency contacts added yet",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+            Text(
+                text = stringResource(R.string.no_contacts),
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
         } else {
             LazyColumn(
                 modifier = Modifier.weight(1f),
@@ -64,20 +59,16 @@ fun ContactSetupScreen(
 
         Button(
             onClick = { showAddDialog = true },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Icon(Icons.Default.Add, contentDescription = "Add Contact")
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Add Emergency Contact")
+            Text(stringResource(R.string.add_contact))
         }
 
         Button(
             onClick = onBack,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Save and Return")
+            Text(stringResource(R.string.save_and_return))
         }
     }
 
@@ -122,7 +113,10 @@ private fun ContactCard(
                 )
             }
             IconButton(onClick = onDelete) {
-                Icon(Icons.Default.Delete, contentDescription = "Delete Contact")
+                Icon(
+                    Icons.Default.Delete, 
+                    contentDescription = stringResource(R.string.delete_contact)
+                )
             }
         }
     }
@@ -138,20 +132,20 @@ private fun AddContactDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Add Emergency Contact") },
+        title = { Text(stringResource(R.string.add_emergency_contact)) },
         text = {
             Column {
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text("Name") },
+                    label = { Text(stringResource(R.string.contact_name)) },
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 OutlinedTextField(
                     value = phone,
                     onValueChange = { phone = it },
-                    label = { Text("Phone Number") },
+                    label = { Text(stringResource(R.string.contact_phone)) },
                     modifier = Modifier.fillMaxWidth()
                 )
             }
@@ -161,12 +155,12 @@ private fun AddContactDialog(
                 onClick = { onAdd(name, phone) },
                 enabled = name.isNotBlank() && phone.isNotBlank()
             ) {
-                Text("Add")
+                Text(stringResource(R.string.add))
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel")
+                Text(stringResource(R.string.cancel))
             }
         }
     )

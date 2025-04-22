@@ -1,5 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SOSremasterd</string>
-    <string name="accessibility_service_description">SOS Emergency Service - Monitors key combinations for emergency triggers</string>
+    <string name="app_name">SOS Emergency</string>
+    
+    <!-- Welcome Screen -->
+    <string name="welcome_title">Welcome to SOS Emergency</string>
+    <string name="welcome_description">A quick and reliable solution for help in emergency situations</string>
+    <string name="get_started">Get Started</string>
+
+    <!-- How to Use Screen -->
+    <string name="how_to_use">How to Use</string>
+    <string name="set_trigger_title">Set Your Trigger</string>
+    <string name="set_trigger_desc">Customize how you activate the SOS alert by selecting a combination of volume and power buttons.</string>
+    <string name="trigger_activation_title">Trigger Activation</string>
+    <string name="trigger_activation_desc">When triggered, the app will automatically start recording, enable GPS, and send alerts to your emergency contacts.</string>
+    <string name="cancel_option_title">Cancel Option</string>
+    <string name="cancel_option_desc">You can cancel an SOS alert within 5 seconds if triggered by mistake.</string>
+    <string name="continue_button">Continue</string>
+
+    <!-- Legal Screen -->
+    <string name="legal_title">Legal Information</string>
+    <string name="legal_description">Please read and accept the following terms before using this app:</string>
+    <string name="legal_terms">1. This app is an emergency assistance tool.\n\n
+2. Privacy and Data Usage: We only use your device\'s sensors (camera, microphone, GPS) during active emergencies. All data is stored securely on your device.\n\n
+3. No Data Collection: We do not collect or store any personal data outside of emergency situations. Your privacy is our priority.\n\n
+4. Emergency Contacts Only: Your data and location are only shared with your designated emergency contacts during an SOS situation.\n\n
+5. Service Limitations: While we strive for reliability, the app\'s functionality depends on device connectivity and battery. We cannot guarantee service in all situations.\n\n
+6. Sensor Usage: By accepting, you allow the app to access location, camera, and microphone ONLY during emergency situations.</string>
+    <string name="agree_continue">I Understand and Accept</string>
+
+    <!-- Setup Screen -->
+    <string name="setup_title">Setup</string>
+    <string name="setup_description">Set your trigger combination</string>
+    <string name="record_combination">Record Combination</string>
+    <string name="stop_recording">Stop Recording</string>
+    <string name="finish_setup">Finish Setup</string>
+    <string name="current_combination">Current combination:</string>
+
+    <!-- Sentry Mode Screen -->
+    <string name="sentry_mode">Sentry Mode</string>
+    <string name="start_sentry">Start\nSentry Mode</string>
+    <string name="stop_sentry">Stop\nSentry Mode</string>
+    <string name="setup_trigger">Setup Trigger</string>
+    <string name="setup_contacts">Setup Contacts</string>
+
+    <!-- Contact Setup Screen -->
+    <string name="contact_setup">Contact Setup</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="no_contacts">No emergency contacts added</string>
+    <string name="save_and_return">Save and Return</string>
+    <string name="add_emergency_contact">Add Emergency Contact</string>
+    <string name="contact_name">Name</string>
+    <string name="contact_phone">Phone Number</string>
+    <string name="add">Add</string>
+    <string name="delete_contact">Delete Contact</string>
+
+    <!-- Accessibility Service -->
     <string name="accessibility_service_label">SOS Emergency Service</string>
+    <string name="accessibility_service_description">Required for detecting button presses. This service detects button presses even when your device is locked.</string>
+
+    <!-- Dialogs -->
+    <string name="accessibility_dialog_title">Accessibility Service Required</string>
+    <string name="accessibility_dialog_message">SOS service needs accessibility permissions to detect button presses when the screen is locked. Please enable \'SOS Emergency Service\' in accessibility settings.</string>
+    <string name="open_settings">Open Settings</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Notifications -->
+    <string name="notification_title">SOS Monitor Active</string>
+    <string name="notification_text">Monitoring for emergency triggers</string>
+
+    <!-- Messages -->
+    <string name="sos_message">Emergency Alert! I am in potential danger. My current location: %1$s</string>
+
+    <!-- Button Labels -->
+    <string name="volume_up">Vol Up</string>
+    <string name="volume_down">Vol Down</string>
+    <string name="power_button">Power</string>
+    <string name="unknown_button">Unknown</string>
+
+    <!-- Trigger Selection -->
+    <string name="set_trigger_combination">Set Trigger Combination</string>
+    <string name="press_buttons_prompt">Press your desired combination of buttons…</string>
+    <string name="start_recording_prompt">Press \'Start Recording\' to set your trigger combination</string>
+    <string name="start_recording">Start Recording</string>
+    <string name="confirm_combination">Confirm Combination</string>
 </resources>

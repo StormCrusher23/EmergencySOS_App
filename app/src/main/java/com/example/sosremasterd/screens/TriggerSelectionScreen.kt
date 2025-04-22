@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import android.view.KeyEvent
@@ -15,7 +16,9 @@ import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Star
+import com.example.sosremasterd.R
 import com.example.sosremasterd.viewmodel.TriggerViewModel
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
 fun TriggerSelectionScreen(
@@ -24,7 +27,7 @@ fun TriggerSelectionScreen(
     onCancel: () -> Unit
 ) {
     val recordedKeys by viewModel.recordedKeys.collectAsState()
-    val isRecording by viewModel.isRecording.collectAsState()
+    val isRecording = viewModel.isRecording.value
 
     Column(
         modifier = Modifier
@@ -34,21 +37,20 @@ fun TriggerSelectionScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "Set Trigger Combination",
+            text = stringResource(R.string.set_trigger_combination),
             style = MaterialTheme.typography.headlineMedium
         )
 
         Text(
             text = if (isRecording) {
-                "Press your desired combination of buttons..."
+                stringResource(R.string.press_buttons_prompt)
             } else {
-                "Press 'Start Recording' to set your trigger combination"
+                stringResource(R.string.start_recording_prompt)
             },
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center
         )
 
-        // Display recorded keys
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxWidth()
@@ -60,26 +62,30 @@ fun TriggerSelectionScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Record button
         Button(
             onClick = {
                 if (!isRecording) {
                     viewModel.clearRecordedKeys()
                 }
-                viewModel.setRecording(!isRecording)
+                viewModel.toggleRecording()
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(if (isRecording) "Stop Recording" else "Start Recording")
+            Text(
+                text = if (isRecording) {
+                    stringResource(R.string.stop_recording)
+                } else {
+                    stringResource(R.string.start_recording)
+                }
+            )
         }
 
-        // Confirm and Cancel buttons
         if (recordedKeys.isNotEmpty() && !isRecording) {
             Button(
                 onClick = { onConfirm(recordedKeys) },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Confirm Combination")
+                Text(stringResource(R.string.confirm_combination))
             }
         }
 
@@ -87,7 +93,7 @@ fun TriggerSelectionScreen(
             onClick = onCancel,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Cancel")
+            Text(stringResource(R.string.cancel))
         }
     }
 }
@@ -106,15 +112,17 @@ private fun KeyButton(keyCode: Int) {
                 imageVector = when (keyCode) {
                     KeyEvent.KEYCODE_VOLUME_UP -> Icons.Default.KeyboardArrowUp
                     KeyEvent.KEYCODE_VOLUME_DOWN -> Icons.Default.KeyboardArrowDown
+                    KeyEvent.KEYCODE_POWER -> Icons.Default.Star
                     else -> Icons.Default.AccountBox
                 },
                 contentDescription = null
             )
             Text(
                 text = when (keyCode) {
-                    KeyEvent.KEYCODE_VOLUME_UP -> "Vol Up"
-                    KeyEvent.KEYCODE_VOLUME_DOWN -> "Vol Down"
-                    else -> "Unknown"
+                    KeyEvent.KEYCODE_VOLUME_UP -> stringResource(R.string.volume_up)
+                    KeyEvent.KEYCODE_VOLUME_DOWN -> stringResource(R.string.volume_down)
+                    KeyEvent.KEYCODE_POWER -> stringResource(R.string.power_button)
+                    else -> stringResource(R.string.unknown_button)
                 }
             )
         }

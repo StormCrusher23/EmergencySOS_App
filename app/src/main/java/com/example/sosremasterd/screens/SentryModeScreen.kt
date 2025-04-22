@@ -23,6 +23,8 @@ import androidx.core.content.ContextCompat
 import android.provider.Settings
 import android.view.accessibility.AccessibilityManager
 import android.accessibilityservice.AccessibilityServiceInfo
+import androidx.compose.ui.res.stringResource
+import com.example.sosremasterd.R
 
 private var permissionsGranted = false
 
@@ -65,94 +67,63 @@ fun SentryModeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            text = stringResource(R.string.sentry_mode),
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(vertical = 16.dp)
+        )
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier.weight(2f)
-        ) {
-            Icon(
-                imageVector = Icons.Default.CheckCircle,
-                contentDescription = "Shield Icon",
-                modifier = Modifier.size(100.dp),
-                tint = if (isSentryModeActive) 
-                    MaterialTheme.colorScheme.primary 
-                else 
-                    MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            
-            Spacer(modifier = Modifier.height(32.dp))
-            
-            Button(
-                onClick = {
-                    if (!isSentryModeActive) {
-                        if (!permissionsGranted) {
-                            permissionLauncher.launch(permissions)
-                        } else if (!isAccessibilityServiceEnabled(context)) {
+        Button(
+            onClick = {
+                if (!isSentryModeActive) {
+                    if (permissions.all { permission ->
+                        ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
+                    }) {
+                        if (!isAccessibilityServiceEnabled(context)) {
                             showAccessibilityDialog = true
                         } else {
                             startSentryMode(context, true)
                             isSentryModeActive = true
                         }
                     } else {
-                        startSentryMode(context, false)
-                        isSentryModeActive = false
+                        permissionLauncher.launch(permissions)
                     }
-                },
-                modifier = Modifier
-                    .size(200.dp),
-                shape = MaterialTheme.shapes.extraLarge,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = if (isSentryModeActive)
-                        MaterialTheme.colorScheme.error
-                    else
-                        MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = if (isSentryModeActive)
-                        MaterialTheme.colorScheme.onError
-                    else
-                        MaterialTheme.colorScheme.onPrimaryContainer
-                )
-            ) {
-                Text(
-                    text = if (isSentryModeActive) "Stop\nSentry Mode" else "Start\nSentry Mode",
-                    style = MaterialTheme.typography.headlineMedium,
-                    textAlign = TextAlign.Center
-                )
-            }
+                } else {
+                    startSentryMode(context, false)
+                    isSentryModeActive = false
+                }
+            },
+            modifier = Modifier
+                .size(200.dp)
+                .padding(16.dp)
+        ) {
+            Text(
+                text = if (isSentryModeActive) 
+                    stringResource(R.string.stop_sentry)
+                else 
+                    stringResource(R.string.start_sentry),
+                style = MaterialTheme.typography.headlineMedium,
+                textAlign = TextAlign.Center
+            )
         }
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            FilledTonalButton(
-                onClick = onSetupClick,
-                modifier = Modifier.wrapContentSize()
-            ) {
+            IconButton(onClick = onSetupClick) {
                 Icon(
                     imageVector = Icons.Default.Settings,
-                    contentDescription = "Settings",
-                    modifier = Modifier.size(24.dp)
+                    contentDescription = stringResource(R.string.setup_trigger)
                 )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text("SOS Setup")
             }
-
-            FilledTonalButton(
-                onClick = onContactSetupClick,
-                modifier = Modifier.wrapContentSize()
-            ) {
+            IconButton(onClick = onContactSetupClick) {
                 Icon(
                     imageVector = Icons.Default.Call,
-                    contentDescription = "Contacts",
-                    modifier = Modifier.size(24.dp)
+                    contentDescription = stringResource(R.string.setup_contacts)
                 )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text("Emergency Contacts")
             }
         }
     }
@@ -160,27 +131,21 @@ fun SentryModeScreen(
     if (showAccessibilityDialog) {
         AlertDialog(
             onDismissRequest = { showAccessibilityDialog = false },
-            title = { Text("Accessibility Service Required") },
-            text = { 
-                Text(
-                    "The SOS service needs accessibility permissions to detect button presses " +
-                    "when your device is locked. Please enable 'SOS Emergency Service' in the " +
-                    "accessibility settings."
-                )
-            },
+            title = { Text(stringResource(R.string.accessibility_dialog_title)) },
+            text = { Text(stringResource(R.string.accessibility_dialog_message)) },
             confirmButton = {
                 Button(
                     onClick = {
-                        showAccessibilityDialog = false
                         context.startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+                        showAccessibilityDialog = false
                     }
                 ) {
-                    Text("Open Settings")
+                    Text(stringResource(R.string.open_settings))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showAccessibilityDialog = false }) {
-                    Text("Cancel")
+                    Text(stringResource(R.string.cancel))
                 }
             }
         )
@@ -188,15 +153,11 @@ fun SentryModeScreen(
 }
 
 private fun startSentryMode(context: Context, start: Boolean) {
-    val serviceIntent = Intent(context, SosForegroundService::class.java)
+    val intent = Intent(context, SosForegroundService::class.java)
     if (start) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(serviceIntent)
-        } else {
-            context.startService(serviceIntent)
-        }
+        context.startService(intent)
     } else {
-        context.stopService(serviceIntent)
+        context.stopService(intent)
     }
 }
 
