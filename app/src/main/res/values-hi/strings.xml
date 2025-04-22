@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SOS आपातकालीन</string>
+    
+    <!-- Welcome Screen -->
+    <string name="welcome_title">SOS आपातकालीन में आपका स्वागत है</string>
+    <string name="welcome_description">आपातकालीन स्थिति में मदद के लिए एक त्वरित और विश्वसनीय समाधान</string>
+    <string name="get_started">शुरू करें</string>
+
+    <!-- How to Use Screen -->
+    <string name="how_to_use">उपयोग कैसे करें</string>
+    <string name="set_trigger_title">अपना ट्रिगर सेट करें</string>
+    <string name="set_trigger_desc">वॉल्यूम और पावर बटन के संयोजन का चयन करके SOS अलर्ट को सक्रिय करने का तरीका कस्टमाइज़ करें।</string>
+    <string name="trigger_activation_title">ट्रिगर सक्रियण</string>
+    <string name="trigger_activation_desc">ट्रिगर होने पर, ऐप स्वचालित रूप से रिकॉर्डिंग शुरू करेगा, GPS सक्षम करेगा, और आपके आपातकालीन संपर्कों को अलर्ट भेजेगा।</string>
+    <string name="cancel_option_title">रद्द करने का विकल्प</string>
+    <string name="cancel_option_desc">गलती से ट्रिगर होने पर आप 5 सेकंड के भीतर SOS अलर्ट को रद्द कर सकते हैं।</string>
+    <string name="continue_button">जारी रखें</string>
+
+    <!-- Legal Screen -->
+    <string name="legal_title">कानूनी जानकारी</string>
+    <string name="legal_description">इस ऐप का उपयोग करने से पहले कृपया निम्नलिखित शर्तों को पढ़ें और स्वीकार करें:</string>
+    <string name="legal_terms">1. यह ऐप एक आपातकालीन सहायता उपकरण है।\n\n
+2. गोपनीयता और डेटा उपयोग: हम आपके डिवाइस के सेंसर (कैमरा, माइक्रोफोन, GPS) का उपयोग केवल सक्रिय आपातकाल के दौरान करते हैं। सभी डेटा आपके डिवाइस पर सुरक्षित रूप से संग्रहित है।\n\n
+3. कोई डेटा संग्रह नहीं: हम आपातकालीन स्थितियों के अलावा कोई व्यक्तिगत डेटा एकत्र या स्टोर नहीं करते हैं। आपकी गोपनीयता हमारी प्राथमिकता है।\n\n
+4. केवल आपातकालीन संपर्क: आपका डेटा और स्थान केवल आपके नामित आपातकालीन संपर्कों के साथ SOS स्थिति के दौरान साझा किया जाता है।\n\n
+5. सेवा सीमाएं: हम विश्वसनीयता का प्रयास करते हैं, लेकिन ऐप की कार्यक्षमता डिवाइस कनेक्टिविटी और बैटरी पर निर्भर करती है। हम सभी परिस्थितियों में सेवा की गारंटी नहीं दे सकते।\n\n
+6. सेंसर उपयोग: स्वीकार करके, आप ऐप को केवल आपातकालीन स्थितियों के दौरान स्थान, कैमरा और माइक्रोफ़ोन तक पहुंच की अनुमति देते हैं।</string>
+    <string name="agree_continue">मैं समझता/समझती हूं और स्वीकार करता/करती हूं</string>
+
+    <!-- Setup Screen -->
+    <string name="setup_title">सेटअप</string>
+    <string name="setup_description">अपना ट्रिगर कॉम्बिनेशन सेट करें</string>
+    <string name="record_combination">कॉम्बिनेशन रिकॉर्ड करें</string>
+    <string name="stop_recording">रिकॉर्डिंग रोकें</string>
+    <string name="finish_setup">सेटअप पूरा करें</string>
+    <string name="current_combination">वर्तमान कॉम्बिनेशन:</string>
+
+    <!-- Sentry Mode Screen -->
+    <string name="sentry_mode">सेंट्री मोड</string>
+    <string name="start_sentry">सेंट्री मोड\nशुरू करें</string>
+    <string name="stop_sentry">सेंट्री मोड\nबंद करें</string>
+    <string name="setup_trigger">ट्रिगर सेटअप</string>
+    <string name="setup_contacts">संपर्क सेटअप</string>
+
+    <!-- Contact Setup Screen -->
+    <string name="contact_setup">संपर्क सेटअप</string>
+    <string name="add_contact">संपर्क जोड़ें</string>
+    <string name="no_contacts">कोई आपातकालीन संपर्क नहीं जोड़ा गया</string>
+    <string name="save_and_return">सहेजें और वापस जाएं</string>
+    <string name="add_emergency_contact">आपातकालीन संपर्क जोड़ें</string>
+    <string name="contact_name">नाम</string>
+    <string name="contact_phone">फ़ोन नंबर</string>
+    <string name="add">जोड़ें</string>
+    <string name="delete_contact">संपर्क हटाएं</string>
+
+    <!-- Accessibility Service -->
+    <string name="accessibility_service_label">SOS आपातकालीन सेवा</string>
+    <string name="accessibility_service_description">बटन दबाने का पता लगाने के लिए आवश्यक। यह सेवा आपके डिवाइस को लॉक होने पर भी बटन दबाने का पता लगाती है।</string>
+    
+    <!-- Dialogs -->
+    <string name="accessibility_dialog_title">पहुंच सेवा आवश्यक</string>
+    <string name="accessibility_dialog_message">SOS सेवा को लॉक स्क्रीन पर बटन दबाने का पता लगाने के लिए पहुंच अनुमतियों की आवश्यकता है। कृपया पहुंच सेटिंग्स में \'SOS आपातकालीन सेवा\' को सक्षम करें।</string>
+    <string name="open_settings">सेटिंग्स खोलें</string>
+    <string name="cancel">रद्द करें</string>
+
+    <!-- Notifications -->
+    <string name="notification_title">SOS मॉनिटर सक्रिय</string>
+    <string name="notification_text">आपातकालीन ट्रिगर की निगरानी कर रहा है</string>
+
+    <!-- Messages -->
+    <string name="sos_message">आपातकालीन अलर्ट! मैं संभावित खतरे में हूं। मेरा वर्तमान स्थान: %1$s</string>
+
+    <!-- Button Labels -->
+    <string name="volume_up">वॉल्यूम बढ़ाएं</string>
+    <string name="volume_down">वॉल्यूम घटाएं</string>
+    <string name="power_button">पावर</string>
+    <string name="unknown_button">अज्ञात</string>
+</resources> 

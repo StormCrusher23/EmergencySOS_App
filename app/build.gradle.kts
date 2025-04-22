@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sosremasterd"
+    namespace = "com.storm.sosremasterd"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.sosremasterd"
+        applicationId = "com.storm.sosremasterd"
         minSdk = 30
         targetSdk = 34
         versionCode = 1

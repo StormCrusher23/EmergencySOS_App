@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.sosremasterd">
+    package="com.storm.sosremasterd">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -21,7 +21,6 @@
         android:targetSdkVersion="34" />
 
     <application
-        android:name=".SosApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -33,7 +32,7 @@
         android:localeConfig="@xml/locales_config"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="com.storm.sosremasterd.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.SOSremasterd">
@@ -44,16 +43,16 @@
             </intent-filter>
         </activity>
         <service
-            android:name=".service.SOSService"
+            android:name="com.storm.sosremasterd.service.SOSService"
             android:enabled="true"
             android:exported="false" />
         <service
-            android:name=".service.SosForegroundService"
+            android:name="com.storm.sosremasterd.service.SosForegroundService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="location" />
         <service
-            android:name=".service.SosAccessibilityService"
+            android:name="com.storm.sosremasterd.service.SosAccessibilityService"
             android:label="@string/accessibility_service_label"
             android:description="@string/accessibility_service_description"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
