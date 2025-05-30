@@ -44,17 +44,11 @@ The **Emergency SOS App** is designed to help users in life-threatening situatio
 
 ### Steps
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/yourusername/emergency-sos-app.git
-   cd emergency-sos-app
-   ```
-2. **Open in Android Studio**
-   - Open the project folder in Android Studio.
-   - Sync Gradle dependencies.
-4. **Build & Run**
-   - Connect an Android device or use an emulator.
-   - Click **Run** in Android Studio.
+1. **Download the relaese**
+2. **Install it**
+4. **Some phones may flag it because of the new play protect policy**
+   - Go to google play settings
+   - Turn off play protect then install the app then make use to turn it back on
 
 ## Usage
 
